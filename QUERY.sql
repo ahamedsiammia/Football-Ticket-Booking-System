@@ -93,6 +93,56 @@ INSERT INTO Bookings (user_id, match_id, seat_number, payment_status, total_cost
 (7, 6, NULL, 'Pending', 110.00),
 (1, 7, 'F-15', 'Confirmed', 75.00);
 
--- select * from users;
--- select * from matches;
--- select * from bookings;
+select * from users;
+select * from matches;
+select * from bookings;
+
+
+--         QUERY 1 
+
+SELECT match_id,fixture,base_ticket_price FROM matches WHERE tournament_category = 'Champions League' AND match_status = 'Available'
+
+--         QUERY 2
+
+SELECT * FROM Users WHERE full_name ILIKE 'TANVIR%' OR full_name ILIKE '%HAQUE%'
+
+
+--       QUERY 3
+
+SELECT booking_id,user_id,match_id, COALESCE(payment_status,'Action Required') AS systematic_status FROM Bookings WHERE payment_status IS NULL;
+
+
+--       QUERY 4
+
+SELECT b.booking_id,u.full_name,m.fixture,b.total_cost FROM Bookings AS b INNER JOIN Users AS u ON b.user_id = u.user_id  INNER JOIN Matches AS m  ON m.match_id = b.match_id  
+
+  
+--       QUERY 5
+
+SELECT u.user_id,u.full_name,b.booking_id FROM Bookings AS b FULL JOIN Users AS u ON b.user_id = u.user_id  
+
+
+  
+--       QUERY 6
+  
+SELECT * FROM bookings WHERE total_cost >(SELECT AVG(total_cost) FROM bookings)
+
+
+  
+--       QUERY 7
+   
+SELECT * FROM matches WHERE fixture != 'Real Madrid vs Barcelona' AND base_ticket_price !=  150 ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1  
+  
+SELECT * FROM matches  ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1  
+
+
+
+
+
+
+
+
+
+
+
+
