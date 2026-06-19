@@ -104,7 +104,7 @@ SELECT match_id,fixture,base_ticket_price FROM matches WHERE tournament_category
 
 --         QUERY 2
 
-SELECT * FROM Users WHERE full_name ILIKE 'TANVIR%' OR full_name ILIKE '%HAQUE%'
+SELECT user_id,full_name,email FROM Users WHERE full_name ILIKE 'TANVIR%' OR full_name ILIKE '%HAQUE%'
 
 
 --       QUERY 3
@@ -125,7 +125,7 @@ SELECT u.user_id,u.full_name,b.booking_id FROM Bookings AS b FULL JOIN Users AS 
   
 --       QUERY 6
   
-SELECT * FROM bookings WHERE total_cost >(SELECT AVG(total_cost) FROM bookings)
+SELECT booking_id,match_id,total_cost FROM bookings WHERE total_cost >(SELECT AVG(total_cost) FROM bookings)
 
 
   
@@ -133,16 +133,7 @@ SELECT * FROM bookings WHERE total_cost >(SELECT AVG(total_cost) FROM bookings)
    
 SELECT * FROM matches WHERE fixture != 'Real Madrid vs Barcelona' AND base_ticket_price !=  150 ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1  
   
-SELECT * FROM matches  ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1  
-
-
-
-
-
-
-
-
-
+SELECT match_id,fixture,base_ticket_price FROM matches  ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1  
 
 
 
