@@ -93,6 +93,6 @@ INSERT INTO Bookings (user_id, match_id, seat_number, payment_status, total_cost
 (7, 6, NULL, 'Pending', 110.00),
 (1, 7, 'F-15', 'Confirmed', 75.00);
 
-select * from users;
-select * from matches;
-select * from bookings;
+-- select * from users;
+-- select * from matches;
+-- select * from bookings;
