@@ -1,4 +1,5 @@
 -- Database Create 
+
 CREATE DATABASE Football_Ticket_Booking_System
 
 
@@ -100,7 +101,7 @@ select * from bookings;
 
 --         QUERY 1 
 
-SELECT match_id,fixture,base_ticket_price FROM matches WHERE tournament_category = 'Champions League' AND match_status = 'Available'
+SELECT match_id,fixture,ROUND(base_ticket_price) AS "base_ticket_price" FROM matches WHERE tournament_category = 'Champions League' AND match_status = 'Available'
 
 --         QUERY 2
 
@@ -114,7 +115,7 @@ SELECT booking_id,user_id,match_id, COALESCE(payment_status,'Action Required') A
 
 --       QUERY 4
 
-SELECT b.booking_id,u.full_name,m.fixture,b.total_cost FROM Bookings AS b INNER JOIN Users AS u ON b.user_id = u.user_id  INNER JOIN Matches AS m  ON m.match_id = b.match_id  
+SELECT b.booking_id,u.full_name,m.fixture,ROUND(b.total_cost) AS "total_cost" FROM Bookings AS b INNER JOIN Users AS u ON b.user_id = u.user_id  INNER JOIN Matches AS m  ON m.match_id = b.match_id  
 
   
 --       QUERY 5
@@ -131,9 +132,17 @@ SELECT booking_id,match_id,total_cost FROM bookings WHERE total_cost >(SELECT AV
   
 --       QUERY 7
    
-SELECT * FROM matches WHERE fixture != 'Real Madrid vs Barcelona' AND base_ticket_price !=  150 ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1  
   
-SELECT match_id,fixture,base_ticket_price FROM matches  ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1  
+SELECT match_id,fixture,base_ticket_price FROM matches  ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1
+
+
+
+
+
+
+
+
+
 
 
 
